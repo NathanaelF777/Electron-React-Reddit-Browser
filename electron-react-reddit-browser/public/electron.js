@@ -1,21 +1,44 @@
 const { app, BrowserWindow } = require('electron')
+const electron = require('electron')
 const path = require("path")
 const isDev = require("electron-is-dev")
+const ipcMain = electron.ipcMain
+
+let win;
+let showWin
 
 function createWindow () {
   // Create the browser window.
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: true
     }
-  })
+  });
+  showWin = new BrowserWindow({
+    width: 600,
+    height: 600,
+    parent: win,
+    show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  });
 
   // and load the index.html of the app.
   win.loadURL(
     isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, "../build/index.html")}`
   )
+  showWin.loadURL(
+    isDev ? 'http://localhost:3000/show' : `file://${path.join(__dirname, "../build/index.html")}`
+  )
+
+  showWin.on('close', (e) => {
+    e.preventDefault()
+    showWin.hide()
+  })
+
 }
 
 // This method will be called when Electron has finished
@@ -38,6 +61,11 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow()
   }
+})
+
+ipcMain.on('toggle-show', (event, arg) => {
+  showWin.show()
+  showWin.webContents.send('image', arg)
 })
 
 // In this file you can include the rest of your app's specific main process
