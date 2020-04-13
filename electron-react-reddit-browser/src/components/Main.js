@@ -15,7 +15,8 @@ class Main extends Component {
     this.state = {
       posts: [],
       search: '',
-      error: false
+      error: false,
+      currentSub: false
     }
     this.getSub = this.getSub.bind(this)
     this.show = this.show.bind(this)
@@ -30,7 +31,8 @@ class Main extends Component {
       this.setState({
         posts: data.data.children,
         search: '',
-        error: false
+        error: false,
+        currentSub: sub
       })
     } catch(error) {
       console.error(error);
@@ -70,6 +72,7 @@ class Main extends Component {
           </Form>
 
         </Navbar>
+        {this.state.currentSub ? <h3 className="title">Welcome to r/{this.state.currentSub}</h3> : ''}
         <ul className="new-list-group new-list-group-flush">
           {this.state.error ? <h5 className='warning'>The sub you are looking for does not exist.</h5> : ''}
           {this.state.posts.map(post => (
