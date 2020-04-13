@@ -57,7 +57,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.getSub('aww')
+    this.getSub('programmerhumor')
   }
 
 
@@ -79,7 +79,7 @@ class Main extends Component {
             <li
               key={post.data.id}
               className="new-list-group-item new-flex-container"
-              onClick={() => this.show(post.data.preview.images[0].source.url)}
+              onClick={() => this.show(post.data.permalink)}
               >
               {post.data.thumbnail_height
                 ? <img src={post.data.thumbnail} alt="thumbnail" className="thumbnail"/>
