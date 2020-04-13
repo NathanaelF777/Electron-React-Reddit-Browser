@@ -12,7 +12,6 @@ class Main extends Component {
     }
     this.getSub = this.getSub.bind(this)
     this.show = this.show.bind(this)
-    this.initMenu = this.initMenu.bind(this)
   }
 
   async getSub(){
@@ -27,6 +26,10 @@ class Main extends Component {
     }
   }
 
+  handleChange(e){
+    this.setState({[e.target.id]: e.target.value})
+  }
+
   show(image) {
     console.log(image);
     ipcRenderer.send('toggle-show', image)
@@ -34,44 +37,14 @@ class Main extends Component {
 
   componentDidMount() {
     this.getSub()
-    this.initMenu()
   }
 
-  initMenu() {
-    const menu = Menu.buildFromTemplate([
-      {
-        label: "Reddit",
-        submenu: [
-          { label: "New Window" },
-          {
-            label: "Settings",
-            accelerator: "CmdOrCtrl+,",
-            click: () => {
-              ipcRenderer.send("toggle-settings");
-            }
-          },
-          { type: "separator" },
-          {
-            label: "Quit",
-            accelerator: "CmdOrCtrl+Q"
-          }
-        ]
-      },
-      {
-        label: "Edit",
-        submenu: [
-          { label: "Menu Item 1" },
-          { label: "Menu Item 2" },
-          { label: "Menu Item 3" }
-        ]
-      }
-    ]);
-    Menu.setApplicationMenu(menu);
-  }
+
 
   render(){
     return(
       <div>
+        <h1>Electron Reddit</h1>
         <ul className="list-group list-group-flush">
           {this.state.posts.map(post => (
             <li

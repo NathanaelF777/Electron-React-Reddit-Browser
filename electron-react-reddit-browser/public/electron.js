@@ -31,7 +31,7 @@ function createWindow () {
     isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, "../build/index.html")}`
   )
   showWin.loadURL(
-    isDev ? 'http://localhost:3000/show' : `file://${path.join(__dirname, "../build/index.html")}`
+    isDev ? 'http://localhost:3000/#/show' : `file://${path.join(__dirname, "../build/index.html")}`
   )
 
   showWin.on('close', (e) => {
