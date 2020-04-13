@@ -3,7 +3,7 @@
   "productName": "Electron Reddit",
   "version": "0.1.0",
   "description": "A reddit clone created with CRA and Electron.",
-  "Author": "Nathanael Fletcher",
+  "author": "Nathanael Fletcher",
   "main": "public/electron.js",
   "build": {
     "appId": "reddit.app",

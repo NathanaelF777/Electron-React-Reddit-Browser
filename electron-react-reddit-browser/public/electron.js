@@ -28,10 +28,10 @@ function createWindow () {
 
   // and load the index.html of the app.
   win.loadURL(
-    isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, "../build/index.html")}`
+    isDev ? 'http://localhost:3000?viewA' : `file://${path.join(__dirname, "../build/index.html?viewA")}`
   )
   showWin.loadURL(
-    isDev ? 'http://localhost:3000/show' : `file://${path.join(__dirname, "../build/index.html")}`
+    isDev ? 'http://localhost:3000?viewB' : `file://${path.join(__dirname, "../build/index.html?viewB")}`
   )
 
   showWin.on('close', (e) => {

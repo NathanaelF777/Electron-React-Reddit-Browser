@@ -1,17 +1,17 @@
 import React from 'react'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {HashRouter, Route, Switch} from 'react-router-dom'
 import App from './App'
 import Image from './components/Image'
 
 
 const Router = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       <Route exact path='/' component={App} />
       <Route exact path='/show' component={Image} />
 
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 )
 
 export default Router
