@@ -14,7 +14,8 @@ class Main extends Component {
     super(props)
     this.state = {
       posts: [],
-      search: ''
+      search: '',
+      error: false
     }
     this.getSub = this.getSub.bind(this)
     this.show = this.show.bind(this)
@@ -28,10 +29,14 @@ class Main extends Component {
       let data = await response.json()
       this.setState({
         posts: data.data.children,
-        search: ''
+        search: '',
+        error: false
       })
     } catch(error) {
       console.error(error);
+      this.setState({
+        error: true
+      })
     }
   }
 
@@ -63,8 +68,10 @@ class Main extends Component {
             <FormControl type="text" placeholder="r/" className="mr-sm-2" value={this.state.search} id="search" onChange={this.handleChange}/>
             <Button type='submit' variant="outline-warning" >Search</Button>
           </Form>
+
         </Navbar>
         <ul className="new-list-group new-list-group-flush">
+          {this.state.error ? <h5 className='warning'>The sub you are looking for does not exist.</h5> : ''}
           {this.state.posts.map(post => (
             <li
               key={post.data.id}

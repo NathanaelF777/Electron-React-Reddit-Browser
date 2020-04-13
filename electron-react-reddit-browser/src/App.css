@@ -71,3 +71,8 @@ cursor: pointer
 .new-list-group-item:hover {
 background-color: #eee;
 }
+
+.warning {
+  color: red;
+  text-align: center;
+}
