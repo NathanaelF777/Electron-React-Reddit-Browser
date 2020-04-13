@@ -10,15 +10,15 @@ let showWin
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 900,
     webPreferences: {
       nodeIntegration: true
     }
   });
   showWin = new BrowserWindow({
-    width: 600,
-    height: 600,
+    width: 900,
+    height: 900,
     parent: win,
     show: false,
     webPreferences: {
@@ -66,6 +66,10 @@ app.on('activate', () => {
 ipcMain.on('toggle-show', (event, arg) => {
   showWin.show()
   showWin.webContents.send('image', arg)
+})
+
+ipcMain.on('closeWin', (event, arg) => {
+  showWin.hide()
 })
 
 // In this file you can include the rest of your app's specific main process
