@@ -1,6 +1,7 @@
 {
   "name": "electron-reddit",
   "productName": "Electron Reddit",
+  "applicationName": "Electron Reddit",
   "version": "0.1.0",
   "description": "A reddit clone created with CRA and Electron.",
   "author": "Nathanael Fletcher",
