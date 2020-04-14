@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
+import Icon from '../icon.png'
 
 const electron = window.require('electron')
 const ipcRenderer = electron.ipcRenderer
@@ -86,7 +87,7 @@ class Image extends Component {
         </div>
         :
         <div className="title-div">
-          <img className="App-logo" src="../icon.png"></img>
+          <img className="App-logo" src={Icon}></img>
         </div>
       }
 
